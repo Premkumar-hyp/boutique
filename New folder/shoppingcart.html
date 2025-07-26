@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Shopping Cart</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+<div class="header"> 
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <a href="front.html"><img src="logo.png" width="100px"></a>
+      </div>
+      <nav>
+        <ul>
+          <a href="front.html"><li>Home</li></a>
+          <a href="product.html"><li>Products</li></a>
+          <a href=""><li>About</li></a>
+          <a href=""><li>Contact</li></a>
+          <a href="fashlogin.html"><li>Account</li></a>
+        </ul>
+      </nav>
+      <a href="shoppingcart.html"><img src="shopping-bag-icon-free-vector.jpg" width="30px" height="30px"></a>
+    </div>
+  </div> 
+</div>
+
+<div class="small-container">
+  <h2>Your Cart</h2>
+  <table id="cart-table">
+    <tr>
+      <th>Product</th>
+      <th>Size</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+      <th>Remove</th>
+    </tr>
+  </table>
+
+  <div class="total-price">
+    <table>
+      <tr><td>Subtotal</td><td id="subtotal">$0.00</td></tr>
+      <tr><td>Tax (10%)</td><td id="tax">$0.00</td></tr>
+      <tr><td>Total</td><td id="total">$0.00</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-col-1">
+        <h3>Download Our App</h3>
+        <p>Android and iOS app support</p>
+        <div class="store-logo">
+          <img src="storelogo.png">
+        </div>
+      </div>
+      <div class="footer-col-2">
+        <img src="logo.png">
+        <p>Thank You</p>
+      </div>
+      <div class="footer-col-3">
+        <h3>Follow Us & Links</h3>
+        <ul>
+          <li>Instagram</li>
+          <li>YouTube</li>
+          <li>Coupons</li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p>COPYRIGHT 2025</p>
+  </div>
+</div>
+
+<script>
+  function loadCart() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const table = document.getElementById("cart-table");
+
+    let subtotal = 0;
+
+    cart.forEach((item, index) => {
+      const row = table.insertRow(-1);
+      row.innerHTML = `
+        <td><img src="${item.image}" width="80px"><br>${item.name}</td>
+        <td>${item.size}</td>
+        <td><input type="number" value="${item.qty}" min="1" class="qty-input" data-index="${index}"></td>
+        <td class="item-total">$${(item.price * item.qty).toFixed(2)}</td>
+        <td><a href="#" class="remove-link" data-index="${index}">Remove</a></td>
+      `;
+      subtotal += item.price * item.qty;
+    });
+
+    const tax = subtotal * 0.10;
+    const total = subtotal + tax;
+
+    document.getElementById("subtotal").innerText = "$" + subtotal.toFixed(2);
+    document.getElementById("tax").innerText = "$" + tax.toFixed(2);
+    document.getElementById("total").innerText = "$" + total.toFixed(2);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    loadCart();
+
+    document.getElementById("cart-table").addEventListener("input", (e) => {
+      if (e.target.classList.contains("qty-input")) {
+        const index = e.target.getAttribute("data-index");
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        cart[index].qty = parseInt(e.target.value);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload();
+      }
+    });
+
+    document.getElementById("cart-table").addEventListener("click", (e) => {
+      if (e.target.classList.contains("remove-link")) {
+        e.preventDefault();
+        const index = e.target.getAttribute("data-index");
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload();
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="file:///C:/Users/prem/OneDrive/Pictures/PYTHON/font%20awesome/fontawesome-free-6.7.2-web/fontawesome-free-6.7.2-web/css/all.css">
+</head> 
+<body>
+    <div class="header"> 
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="front.html"><img src="logo.png" width="100px"></a>
+            </div>
+            <nav>
+                <ul>
+                    <a href="front.html"><li>Home</li></a>
+                    <a href="product.html"><li>Products</li></a>
+                    <a href=""><li>About</li></a>
+                    <a href=""><li>Contact</li></a>
+                    <a href="fashlogin.html"><li>Account</li></a>
+    
+                </ul>
+            </nav>
+             <a href="shoppingcart.html"><img src="shopping-bag-icon-free-vector.jpg" width="30px" height="30px"></a>
+        </div>     
+     </div> 
+    </div>
+    <!----------------account page --------------->
+    <div  class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="Neha_Sshetty.jpg" width="100%">
+                </div>
+                <div class="col-2">
+                    <div class="form-container">
+                        <div class="form-btn">
+                            <span onclick="login()">Login</span>
+                            <span onclick="register()">Register</span>
+                            <hr id="Indicator">
+                        </div>
+                        <form id="LoginForm">
+                            <input type="text" placeholder="username">
+                            <input type="password" placeholder="enterpassword"><br>
+                            <button type="submit" class="btn">Login</button><br>
+                            <a href="">Forgotpassword?</a>
+                        </form>
+                        <form id="RegForm">
+                            <input type="text" placeholder="username">
+                            <input type="email" placeholder="enter email">
+                            <input type="password" placeholder="enter password"><br>
+                            <button type="submit" class="btn"> Register </button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--------------footer-------------->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3> Download Our App </h3>
+                <p>Android and ios app support</p>
+                <div class="store-logo">
+                    <img src="storelogo.png">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="logo.png">
+                <p>Thank You</p>
+            </div>
+            <div class="footer-col-3">
+                <h3> follow us & links </h3>
+                <ul>
+                    <li>Instagram</li>
+                    <li>You Tube</li>
+                    <li>coupons</li>
+                </ul>
+            </div>
+            
+        </div>
+        <hr>
+        <p> COPYRIGHT 2025</p>
+    </div>
+</div>
+<!---------------------js for toggle form---------->
+<script>
+    var LoginForm = document.getElementById("LoginForm")
+    var RegForm = document.getElementById("RegForm")
+    var Indicator = document.getElementById("Indicator")
+
+    function register(){
+        RegForm.style.transform = "translateX(0px)";
+        LoginForm.style.transform = "translateX(0px)"; 
+        Indicator.style.transform = "translateX(100px)";
+    }
+    
+    function login(){
+        RegForm.style.transform = "translateX(300px)";
+        LoginForm.style.transform = "translateX(300px)"; 
+        Indicator.style.transform = "translateX(0px)";
+    }    
+</script>
+
+</body>
+</html>

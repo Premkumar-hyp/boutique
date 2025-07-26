@@ -1,0 +1,164 @@
+<html>
+<head>
+    <title>product details</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head> 
+<body>
+    <div class="header"> 
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="front.html"><img src="logo.png" width="100px"></a>
+            </div>
+            <nav>
+                <ul>
+                    <a href="front.html"><li>Home</li></a>
+                    <a href="product.html"><li>Products</li></a>
+                    <a href=""><li>About</li></a>
+                    <a href=""><li>Contact</li></a>
+                    <a href="fashlogin.html"><li>Account</li></a>
+    
+                </ul>
+            </nav>
+             <a href="shoppingcart.html"><img src="shopping-bag-icon-free-vector.jpg" width="30px" height="30px"></a>
+        </div>     
+     </div> 
+    </div>
+<!-------------------single product details---------->
+<div class="small-container single-product">
+    <div class="row">
+    <div class="col-2">
+        <img src="neha pathan 2.png" width="100%" id="product-img">
+    </div>
+    </div>
+    <div class="col-2">
+        <p> Home / Dress </p>
+        <h1 id="product-name"> jeans Dress </h1>
+        <h4 id="product-price">$50.00</h4>
+       <select id="product-size">
+                    <option value="">Select Size</option>
+                    <option value="XL">XL</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                </select>
+                <input type="number" id="product-qty" value="1" min="1">
+                <button class="btn" onclick="addToCart()">Add to Cart</button>
+ 
+        <h3> product details</h3>
+        <br>
+        <p> best quality import from india </p>
+    </div>
+    </div>
+</div>
+<!----------------title----------->
+<div class="small-container">
+    <div class="row row-2">
+        <h2>Related Product</h2>
+        <a href="product 02.html"><p> View More &#8594;</p></a>
+    </div>
+</div>
+<!----------featured products--------->
+
+    <div class="row">
+        <div class="col-4">
+            <a href="single.html"><img src="rushi 1.2.png"></a>
+            <h4>Red Dress</h4>
+            <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <p>$50.00</p>
+        </div>
+        <div class="col-4">
+            <a href="single08.html"><img src="ashika 2.png"></a>
+            <h4>white Dress</h4>
+            <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <p>$60.00</p>
+        </div>
+        <div class="col-4">
+            <a href="single07.html"><img src="neha pathan 1.jpg"></a>
+            <h4>Black heart Dress</h4>
+            <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <p>$55.00</p>
+        </div>
+        <div class="col-4">
+            <a href="single02.html"><img src="dev 4.jpg"></a>
+            <h4>Saree KL</h4>
+            <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <p>$70.00</p>
+        </div>
+    </div>
+</div>
+<!--------------footer-------------->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3> Download Our App </h3>
+                <p>Android and ios app support</p>
+                <div class="store-logo">
+                    <img src="storelogo.png">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="logo.png">
+                <p>Thank You</p>
+            </div>
+            <div class="footer-col-3">
+                <h3> follow us & links </h3>
+                <ul>
+                    <li>Instagram</li>
+                    <li>You Tube</li>
+                    <li>coupons</li>
+                </ul>
+            </div>
+            
+        </div>
+        <hr>
+        <p> COPYRIGHT 2025</p>
+    </div>
+</div>
+<script>
+function addToCart() {
+            const product = {
+                name: document.getElementById("product-name").innerText,
+                price: document.getElementById("product-price").innerText.replace('$',''),
+                size: document.getElementById("product-size").value,
+                qty: document.getElementById("product-qty").value,
+                image: document.getElementById("product-img").src
+            };
+
+            if (!product.size) {
+                alert("Please select a size.");
+                return;
+            }
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push(product);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert("Product added to cart!");
+        }
+    </script>
+</body>
+</html>
